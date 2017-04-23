@@ -33,9 +33,12 @@ export class TemplateDrivenComponent implements OnInit {
   onProvinceChange(){
     this.cities = getCitiesByProvince(this.user.address.province);
     this.areas = [];
+    this.user.address.area = '';
+    this.user.address.city = '';
   }
 
   onCityChange(){
     this.areas = getAreasByCity(this.user.address.province, this.user.address.city);
+    this.user.address.area = '';
   }
 }
