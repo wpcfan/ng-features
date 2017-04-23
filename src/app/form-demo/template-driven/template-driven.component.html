@@ -1,0 +1,66 @@
+<form novalidate #f="ngForm">
+  <label>
+    <span>电子邮件地址</span>
+    <input
+      type="text"
+      name="email"
+      placeholder="请输入您的 email 地址"
+      [ngModel]="user.email"
+      required
+      pattern="([a-zA-Z0-9]+[_|_|.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|_|.]?)*[a-zA-Z0-9]+.[a-zA-Z]{2,4}">
+  </label>
+  <div>
+    <label>
+      <span>密码</span>
+      <input
+        type="password"
+        name="password"
+        placeholder="请输入您的密码"
+        [(ngModel)]="user.password"
+        required>
+    </label>
+    <label>
+      <span>确认密码</span>
+      <input
+        type="password"
+        name="repeat"
+        placeholder="请再次输入密码"
+        [(ngModel)]="user.repeat"
+        required>
+    </label>
+  </div>
+  <div ngModelGroup="address">
+    <label>
+      <span>省份</span>
+      <select name="province" (change)="onProvinceChange()" [(ngModel)]="user.address.province">
+        <option value="">请选择省份</option>
+        <option [value]="province" *ngFor="let province of provinces">{{province}}</option>
+      </select>
+    </label>
+    <label>
+      <span>城市</span>
+      <select name="city" (change)="onCityChange()" [(ngModel)]="user.address.city">
+        <option value="">请选择城市</option>
+        <option [value]="city" *ngFor="let city of cities">{{city}}</option>
+      </select>
+    </label>
+    <label>
+      <span>区县</span>
+      <select name="area" [(ngModel)]="user.address.area">
+        <option value="">请选择区县</option>
+        <option [value]="area" *ngFor="let area of areas">{{area}}</option>
+      </select>
+    </label>
+    <label>
+      <span>地址</span>
+      <input type="text" name="addr" [(ngModel)]="user.address.addr">
+    </label>
+  </div>
+  <button type="submit" [disabled]="f.invalid">注册</button>
+</form>
+<div>
+<span>user: </span> {{user | json}}
+</div>
+<div>
+<span>表单：</span> {{f.value | json}}
+</div>
