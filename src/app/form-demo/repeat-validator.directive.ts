@@ -23,26 +23,26 @@ export class RepeatValidatorDirective implements Validator{
   }
 
   validate(c: AbstractControl): { [key: string]: any } {
-    // self value
+    // 控件自身值
     let self = c.value;
 
-    // control vlaue
+    // 要对比的值，也就是在 appRepeatValidator=“ctrlname” 的那个控件的值
     let target = c.root.get(this.validateEqual);
 
-    // value not equal
+    // 不反向查询且值不相等
     if (target && self !== target.value && !this.isReverse) {
       return {
         validateEqual: false
       }
     }
 
-    // value equal and reverse
+    // 反向查询且值相等
     if (target && self === target.value && this.isReverse) {
         delete target.errors['validateEqual'];
         if (!Object.keys(target.errors).length) target.setErrors(null);
     }
 
-    // value not equal and reverse
+    // 反向查询且值不相等
     if (target && self !== target.value && this.isReverse) {
         target.setErrors({
             validateEqual: false
