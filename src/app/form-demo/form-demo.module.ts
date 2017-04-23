@@ -5,6 +5,7 @@ import { TemplateDrivenComponent } from './template-driven/template-driven.compo
 import { ModelDrivenComponent } from './model-driven/model-driven.component';
 import { FormHomeComponent } from './form-home/form-home.component';
 import { FormDemoRoutingModule } from "./form-demo-routing.module";
+import { RepeatValidatorDirective } from './repeat-validator.directive';
 
 @NgModule({
   imports: [
@@ -14,6 +15,11 @@ import { FormDemoRoutingModule } from "./form-demo-routing.module";
     FormDemoRoutingModule
   ],
   exports: [FormHomeComponent],
-  declarations: [TemplateDrivenComponent, ModelDrivenComponent, FormHomeComponent]
+  declarations: [
+    TemplateDrivenComponent, 
+    ModelDrivenComponent, 
+    FormHomeComponent, 
+    RepeatValidatorDirective
+    ]
 })
 export class FormDemoModule { }

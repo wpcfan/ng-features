@@ -17,7 +17,10 @@
         name="password"
         placeholder="请输入您的密码"
         [(ngModel)]="user.password"
-        required>
+        required
+        minlength="8"
+        appRepeatValidator="repeat"
+        reverse="true">
     </label>
     <label>
       <span>确认密码</span>
@@ -26,7 +29,10 @@
         name="repeat"
         placeholder="请再次输入密码"
         [(ngModel)]="user.repeat"
-        required>
+        required
+        minlength="8"
+        appRepeatValidator="password"
+        reverse="false">
     </label>
   </div>
   <div ngModelGroup="address">
@@ -59,8 +65,12 @@
   <button type="submit" [disabled]="f.invalid">注册</button>
 </form>
 <div>
-<span>user: </span> {{user | json}}
+  <span>user: </span> {{user | json}}
 </div>
 <div>
-<span>表单：</span> {{f.value | json}}
+  <span>表单：</span> {{f.value | json}}
+</div>
+<div>
+  <span>验证：</span> {{f.controls.password?.errors | json}}
+  <span>验证：</span> {{f.controls.repeat?.errors | json}}
 </div>

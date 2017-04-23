@@ -8,7 +8,7 @@ import { FormDemoModule } from './form-demo/form-demo.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
