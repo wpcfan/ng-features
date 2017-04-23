@@ -11,7 +11,7 @@ import { getProvinces, getCitiesByProvince, getAreasByCity } from "../../utils/a
 export class TemplateDrivenComponent implements OnInit {
 
   user: User = {
-    email: 'wang@163.com',
+    email: '',
     password: '',
     repeat: '',
     address: {
@@ -40,5 +40,12 @@ export class TemplateDrivenComponent implements OnInit {
   onCityChange(){
     this.areas = getAreasByCity(this.user.address.province, this.user.address.city);
     this.user.address.area = '';
+  }
+
+  onSubmit({value, valid}, event: Event){ 
+    if(valid){
+      console.log(value);
+    }
+    event.preventDefault();
   }
 }

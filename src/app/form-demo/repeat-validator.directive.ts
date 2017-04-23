@@ -2,19 +2,18 @@ import { Directive, forwardRef, Attribute } from '@angular/core';
 import { NG_VALIDATORS, Validator, AbstractControl } from '@angular/forms';
 
 @Directive({
-  selector: '[appRepeatValidator][ngModel], [appRepeatValidator][formControl], [appRepeatValidator][formControlName]',
+  selector: '[validateEqual][ngModel]',
   providers: [
     { 
       provide: NG_VALIDATORS, 
-      useExisting: forwardRef(()=>RepeatValidatorDirective), 
+      useExisting: forwardRef(() => RepeatValidatorDirective), 
       multi: true 
     }
   ]
 })
 export class RepeatValidatorDirective implements Validator{
-  validator: Function;
   constructor(
-    @Attribute('appRepeatValidator') public validateEqual: string,
+    @Attribute('validateEqual') public validateEqual: string,
     @Attribute('reverse') public reverse: string) { }
   
   private get isReverse() {
@@ -26,13 +25,13 @@ export class RepeatValidatorDirective implements Validator{
     // 控件自身值
     let self = c.value;
 
-    // 要对比的值，也就是在 appRepeatValidator=“ctrlname” 的那个控件的值
+    // 要对比的值，也就是在 validateEqual=“ctrlname” 的那个控件的值
     let target = c.root.get(this.validateEqual);
 
     // 不反向查询且值不相等
     if (target && self !== target.value && !this.isReverse) {
       return {
-        validateEqual: false
+        validateEqual: true
       }
     }
 
@@ -45,7 +44,7 @@ export class RepeatValidatorDirective implements Validator{
     // 反向查询且值不相等
     if (target && self !== target.value && this.isReverse) {
         target.setErrors({
-            validateEqual: false
+            validateEqual: true
         })
     }
 

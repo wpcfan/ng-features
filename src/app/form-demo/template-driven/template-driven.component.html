@@ -1,4 +1,4 @@
-<form novalidate #f="ngForm">
+<form novalidate #f="ngForm" (ngSubmit)="onSubmit(f, $event)">
   <label>
     <span>电子邮件地址</span>
     <input
@@ -6,9 +6,16 @@
       name="email"
       placeholder="请输入您的 email 地址"
       [ngModel]="user.email"
+      #email="ngModel"
       required
       pattern="([a-zA-Z0-9]+[_|_|.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|_|.]?)*[a-zA-Z0-9]+.[a-zA-Z]{2,4}">
   </label>
+  <div *ngIf="email.errors?.required && email.touched" class="error">
+    email 是必填项
+  </div>
+  <div *ngIf="email.errors?.pattern && email.touched" class="error">
+    email 格式不正确
+  </div>
   <div>
     <label>
       <span>密码</span>
@@ -17,11 +24,18 @@
         name="password"
         placeholder="请输入您的密码"
         [(ngModel)]="user.password"
+        #password="ngModel"
         required
         minlength="8"
-        appRepeatValidator="repeat"
+        validateEqual="repeat"
         reverse="true">
     </label>
+    <div *ngIf="password.errors?.required && password.touched" class="error">
+      密码是必填项
+    </div>
+    <div *ngIf="password.errors?.minlength && password.touched" class="error">
+      密码需至少8位
+    </div>  
     <label>
       <span>确认密码</span>
       <input
@@ -29,11 +43,21 @@
         name="repeat"
         placeholder="请再次输入密码"
         [(ngModel)]="user.repeat"
+        #repeat="ngModel"
         required
         minlength="8"
-        appRepeatValidator="password"
+        validateEqual="password"
         reverse="false">
     </label>
+    <div *ngIf="repeat.errors?.required && repeat.touched" class="error">
+      确认密码是必填项
+    </div>
+    <div *ngIf="repeat.errors?.minlength && repeat.touched" class="error">
+      确认密码需至少8位
+    </div>    
+    <div *ngIf="repeat.errors?.validateEqual && repeat.touched" class="error">
+      确认密码不匹配
+    </div>     
   </div>
   <div ngModelGroup="address">
     <label>
@@ -64,7 +88,7 @@
   </div>
   <button type="submit" [disabled]="f.invalid">注册</button>
 </form>
-<div>
+<!--<div>
   <span>user: </span> {{user | json}}
 </div>
 <div>
@@ -73,3 +97,9 @@
 <div>
   <span>email 验证：</span> {{f.controls.email?.errors | json}}
 </div>
+<div>
+  <span>密码 验证：</span> {{f.controls.password?.errors | json}}
+</div>
+<div>
+  <span>重复密码 验证：</span> {{f.controls.repeat?.errors | json}}
+</div>-->
