@@ -9,7 +9,7 @@ export const getProvinces = () => {
 }
 
 export const getCitiesByProvince = (province: string) => {
-  if(province.length === 0) return [];
+  if(province === '') return [];
   const cities = city_data[province];
   let citiesByProvice = [];
   for(let city in cities){
@@ -19,7 +19,15 @@ export const getCitiesByProvince = (province: string) => {
 }
 
 export const getAreasByCity = (province: string, city: string) => {
-  if(province.length === 0 || city.length === 0) return [];
+  if(province === undefined || 
+    province === '' || 
+    city === undefined || 
+    city === '' ||
+    !isCityInProvince(city, province)) return [];
   const areas = city_data[province][city];
   return [...areas];
+}
+
+export const isCityInProvince = (city: string, province: string): boolean => {
+  return city_data[province][city] !== undefined;
 }

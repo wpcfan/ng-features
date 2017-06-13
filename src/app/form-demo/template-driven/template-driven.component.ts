@@ -18,14 +18,14 @@ export class TemplateDrivenComponent implements OnInit {
       province: '',
       city: '',
       area: '',
-      addr: ''
+      street: ''
     }
   };
 
   provinces = getProvinces();
   cities = [];
   areas = [];
-  
+
   constructor() { }
 
   ngOnInit() {}
@@ -42,7 +42,7 @@ export class TemplateDrivenComponent implements OnInit {
     this.user.address.area = '';
   }
 
-  onSubmit({value, valid}, event: Event){ 
+  onSubmit({value, valid}, event: Event){
     if(valid){
       console.log(value);
     }

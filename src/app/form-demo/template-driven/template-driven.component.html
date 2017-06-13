@@ -35,7 +35,7 @@
     </div>
     <div *ngIf="password.errors?.minlength && password.touched" class="error">
       密码需至少8位
-    </div>  
+    </div>
     <label>
       <span>确认密码</span>
       <input
@@ -54,10 +54,10 @@
     </div>
     <div *ngIf="repeat.errors?.minlength && repeat.touched" class="error">
       确认密码需至少8位
-    </div>    
+    </div>
     <div *ngIf="repeat.errors?.validateEqual && repeat.touched" class="error">
       确认密码不匹配
-    </div>     
+    </div>
   </div>
   <div ngModelGroup="address">
     <label>
@@ -83,7 +83,7 @@
     </label>
     <label>
       <span>地址</span>
-      <input type="text" name="addr" [(ngModel)]="user.address.addr">
+      <input type="text" name="street" [(ngModel)]="user.address.street">
     </label>
   </div>
   <button type="submit" [disabled]="f.invalid">注册</button>
