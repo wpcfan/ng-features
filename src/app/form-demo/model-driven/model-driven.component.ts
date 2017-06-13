@@ -64,8 +64,10 @@ export class ModelDrivenComponent implements OnInit {
     };
   }
 
-  onSubmit({value, valid}){
-    if (!valid) return;
+  onSubmit({value, valid}) {
+    if (!valid) {
+      return;
+    }
     console.log(JSON.stringify(value));
   }
 

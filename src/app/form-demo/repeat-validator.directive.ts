@@ -11,7 +11,7 @@ import { NG_VALIDATORS, Validator, AbstractControl } from '@angular/forms';
     }
   ]
 })
-export class RepeatValidatorDirective implements Validator{
+export class RepeatValidatorDirective implements Validator {
   constructor(
     @Attribute('validateEqual') public validateEqual: string,
     @Attribute('reverse') public reverse: string) { }
