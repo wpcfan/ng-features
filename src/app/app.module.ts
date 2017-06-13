@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { AppRoutingModule } from "./app-routing.module";
+import { AppRoutingModule } from './app-routing.module';
 import { FormDemoModule } from './form-demo/form-demo.module';
 
 @NgModule({
@@ -14,7 +14,7 @@ import { FormDemoModule } from './form-demo/form-demo.module';
     BrowserModule,
     HttpModule,
     AppRoutingModule,
-    FormDemoModule 
+    FormDemoModule
   ],
   providers: [],
   bootstrap: [AppComponent]

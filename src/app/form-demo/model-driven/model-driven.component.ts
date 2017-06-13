@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormArray, FormGroup, Validators, Validator, ValidatorFn } from '@angular/forms';
-import { Observable } from "rxjs/Observable";
-import "rxjs/add/observable/of";
-import "rxjs/add/operator/filter";
-import "rxjs/add/operator/mergeMap";
-import "rxjs/add/observable/combineLatest";
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/mergeMap';
+import 'rxjs/add/observable/combineLatest';
 import '../../utils/debug';
 
 import {
@@ -12,9 +12,9 @@ import {
   getCitiesByProvince,
   getAreasByCity,
   isCityInProvince
-} from "../../utils/area";
+} from '../../utils/area';
 
-import { Address } from "../../domain";
+import { Address } from '../../domain';
 
 @Component({
   selector: 'app-model-driven',
@@ -61,12 +61,12 @@ export class ModelDrivenComponent implements OnInit {
         };
       }
       return null;
-    }
+    };
   }
 
   onSubmit({value, valid}){
-    if(!valid) return;
-    console.log(JSON.stringify(value))
+    if (!valid) return;
+    console.log(JSON.stringify(value));
   }
 
   addAddr(): void {
@@ -79,6 +79,6 @@ export class ModelDrivenComponent implements OnInit {
       city: [],
       area: [],
       street: []
-    })
+    });
   }
 }

@@ -6,11 +6,11 @@ import { Directive, ElementRef, TemplateRef, ViewContainerRef } from '@angular/c
 export class StructuralDirective {
 
   constructor(
-    el: ElementRef, 
-    private tr: TemplateRef<any>, 
-    private view: ViewContainerRef) { 
+    el: ElementRef,
+    private tr: TemplateRef<any>,
+    private view: ViewContainerRef) {
     console.log(el.nativeElement);
-    console.log(this.tr)
+    console.log(this.tr);
   }
 
 }

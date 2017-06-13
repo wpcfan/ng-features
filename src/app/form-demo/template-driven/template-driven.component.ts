@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { User } from "../../domain";
-import { getProvinces, getCitiesByProvince, getAreasByCity } from "../../utils/area";
+import { User } from '../../domain';
+import { getProvinces, getCitiesByProvince, getAreasByCity } from '../../utils/area';
 
 @Component({
   selector: 'app-template-driven',
@@ -43,7 +43,7 @@ export class TemplateDrivenComponent implements OnInit {
   }
 
   onSubmit({value, valid}, event: Event){
-    if(valid){
+    if (valid){
       console.log(value);
     }
     event.preventDefault();
